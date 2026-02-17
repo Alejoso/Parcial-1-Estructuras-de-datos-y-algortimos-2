@@ -3,7 +3,7 @@
 #include <time.h>
 #include "lista.h"
 #include "helpers.h"
-
+#include <string.h>
 void mostrarPrimerosVehiculos(const Lista* lista, int n, const char* titulo) {
     if (!lista) return;
 
@@ -12,7 +12,7 @@ void mostrarPrimerosVehiculos(const Lista* lista, int n, const char* titulo) {
     Nodo* actual = lista->cabeza;
     for (int i = 0; i < n && actual; i++) {
         printf("%d. ", i + 1);
-        imprimirVehiculo(actual->vehiculo);   // <-- ajusta según cómo guardes el vehículo
+        imprimirVehiculo(actual->vehiculo);  
         actual = actual->siguiente;
     }
 
