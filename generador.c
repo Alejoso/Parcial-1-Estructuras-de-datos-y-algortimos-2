@@ -27,6 +27,8 @@ const char* estaciones[] = {
     "Niquía"
 };
 
+
+
 Vehiculo* crearVehiculo(const char* placa , TipoVehiculo tipo , int sentido , int horaMilitar , DiaSemana dia , float tiempoTramo , const char* estacion)
 {
     Vehiculo* vehiculo = (Vehiculo*)malloc(sizeof(Vehiculo));
@@ -69,6 +71,18 @@ static int generarHora()
     return hora * 100 + minuto;
 }
 
+static const TipoVehiculo generarTipoVehiculo () {
+    float r = (float)rand() / (float)RAND_MAX; 
+
+    if (r <= 0.1) return EMERGENCIA; 
+    if( r <= 0.15) return MEDICO; 
+    if (r <= 0.3) return PASAJEROS; 
+    if (r <=0.5) return CARGA; 
+    if (r <=0.7) return TAXI; 
+    return PARTICULAR;
+
+}
+
 Vehiculo* generarVehiculoAleatorio()
 {
     char placa[8];
@@ -76,15 +90,21 @@ Vehiculo* generarVehiculoAleatorio()
 
     const char* estacion = estaciones[rand() % (sizeof(estaciones) / sizeof(estaciones[0]))];
 
-    TipoVehiculo tipo = (TipoVehiculo)(rand() % 6);
+    TipoVehiculo tipo = generarTipoVehiculo(); 
     DiaSemana dia = (DiaSemana)(rand() % 7);
 
     int sentido = (int)(0 + rand() % 2);
     int horaMilitar = generarHora();
     float tiempoTramo = (float)(20 + rand() % 20);
 
+    if (tipo == CARGA){
+        tiempoTramo += 15; 
+    }
+
     return crearVehiculo(placa , tipo , sentido , horaMilitar , dia , tiempoTramo , estacion);
 }
+
+
 
 static const char* tipoVehiculoToString(TipoVehiculo t) 
 {

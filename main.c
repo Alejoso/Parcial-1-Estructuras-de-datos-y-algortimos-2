@@ -7,6 +7,8 @@
 #include "ordenacion.h"
 #include "limpiarData.h"
 
+
+
 int main(void) {
 
     srand((unsigned int)time(NULL));
@@ -38,11 +40,15 @@ int main(void) {
             fclose(f);
             return 1;
         }
-        
-        int vehiculos_generados = 0;
+        int numeroVehiculosCarga = 0; 
+        int vehiculos_generados = 0; 
         for (int i = 0; i < n; i++) {
             Vehiculo* v = generarVehiculoAleatorio();
+            
             if (v) {
+                if (v->tipo == CARGA) { 
+                    numeroVehiculosCarga++;
+                }
                 if (insertar_al_inicio(lista_original, v)) {
                     vehiculos_generados++;
                 } else {
@@ -50,7 +56,7 @@ int main(void) {
                 }
             }
         }
-        
+        printf("El numero de vehiculos de carga es: %d\n", numeroVehiculosCarga);
         if (vehiculos_generados == 0) {
             printf("Error: No se pudo generar ningun vehiculo\n");
             destruir_lista(lista_original);
@@ -103,6 +109,7 @@ int main(void) {
         } else {
             printf("✗ ADVERTENCIA: Las listas ordenadas no son identicas\n");
         }
+
         
         // mostrarPrimerosVehiculos(copias[0] , 5 , "Primeros de la copia del mergesort");
         // mostrarPrimerosVehiculos(copias[1] , 5 , "Primeros de la copia del quicksort");

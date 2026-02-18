@@ -15,6 +15,7 @@ typedef struct
     const char* estacion;
 } Vehiculo;
 
+
 Vehiculo* crearVehiculo(const char* placa , TipoVehiculo tipo , int sentido , int horaMilitar , DiaSemana dia , float tiempoTramo , const char* estacion);
 Vehiculo* generarVehiculoAleatorio();
 void imprimirVehiculo(const Vehiculo* v);
