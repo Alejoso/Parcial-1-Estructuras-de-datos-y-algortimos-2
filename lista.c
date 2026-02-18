@@ -57,7 +57,7 @@ int insertar_al_final(Lista* lista, Vehiculo* vehiculo) {
     Nodo* nuevo_nodo = (Nodo*)malloc(sizeof(Nodo));
     nuevo_nodo->vehiculo = vehiculo;
     nuevo_nodo->siguiente = lista->cabeza;
-    lista->cabeza = nuevo->nodo;
+    lista->cabeza = nuevo_nodo;
     
     // if (lista->cabeza == NULL) {
     //     lista->cabeza = nuevo_nodo;
