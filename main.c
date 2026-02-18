@@ -43,7 +43,7 @@ int main(void) {
         for (int i = 0; i < n; i++) {
             Vehiculo* v = generarVehiculoAleatorio();
             if (v) {
-                if (insertar_al_final(lista_original, v)) {
+                if (insertar_al_inicio(lista_original, v)) {
                     vehiculos_generados++;
                 } else {
                     liberarvehiculo(v);

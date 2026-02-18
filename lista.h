@@ -15,7 +15,7 @@ typedef struct {
 
 Lista* crear_lista(void);
 void destruir_lista(Lista* lista);
-int insertar_al_final(Lista* lista, Vehiculo* vehiculo);
+int insertar_al_inicio(Lista* lista, Vehiculo* vehiculo);
 void imprimir_lista(const Lista* lista);
 Lista* copiar_lista(const Lista* original);
 int esta_vacia_lista(const Lista* lista);

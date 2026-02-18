@@ -38,14 +38,14 @@ void destruir_lista(Lista* lista) {
 
 // Inserta una persona nueva al final de la lista
 // Retorna 1 si la inserción fue exitosa, 0 en caso contrario
-int insertar_al_final(Lista* lista, Vehiculo* vehiculo) {
+int insertar_al_inicio(Lista* lista, Vehiculo* vehiculo) {
     // if (!lista) {
-    //     fprintf(stderr, "Error: Lista NULL en insertar_al_final\n");
+    //     fprintf(stderr, "Error: Lista NULL en insertar_al_inicio\n");
     //     return 0;
     // }
     
     // if (!vehiculo) {
-    //     fprintf(stderr, "Error: Persona NULL en insertar_al_final\n");
+    //     fprintf(stderr, "Error: Persona NULL en insertar_al_inicio\n");
     //     return 0;
     // }
     
@@ -132,7 +132,7 @@ Lista* copiar_lista(const Lista* original) {
         );
         
         if (vehiculoCopia) {
-            if (!insertar_al_final(copia, vehiculoCopia)) {
+            if (!insertar_al_inicio(copia, vehiculoCopia)) {
                 liberarvehiculo(vehiculoCopia);
                 fprintf(stderr, "Error: No se pudo insertar persona en copia\n");
             }
