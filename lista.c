@@ -39,34 +39,35 @@ void destruir_lista(Lista* lista) {
 // Inserta una persona nueva al final de la lista
 // Retorna 1 si la inserción fue exitosa, 0 en caso contrario
 int insertar_al_final(Lista* lista, Vehiculo* vehiculo) {
-    if (!lista) {
-        fprintf(stderr, "Error: Lista NULL en insertar_al_final\n");
-        return 0;
-    }
+    // if (!lista) {
+    //     fprintf(stderr, "Error: Lista NULL en insertar_al_final\n");
+    //     return 0;
+    // }
     
-    if (!vehiculo) {
-        fprintf(stderr, "Error: Persona NULL en insertar_al_final\n");
-        return 0;
-    }
+    // if (!vehiculo) {
+    //     fprintf(stderr, "Error: Persona NULL en insertar_al_final\n");
+    //     return 0;
+    // }
     
+    // Nodo* nuevo_nodo = (Nodo*)malloc(sizeof(Nodo));
+    // if (!nuevo_nodo) {
+    //     fprintf(stderr, "Error: No se pudo asignar memoria para Nodo\n");
+    //     return 0;
+    // }
     Nodo* nuevo_nodo = (Nodo*)malloc(sizeof(Nodo));
-    if (!nuevo_nodo) {
-        fprintf(stderr, "Error: No se pudo asignar memoria para Nodo\n");
-        return 0;
-    }
-    
     nuevo_nodo->vehiculo = vehiculo;
-    nuevo_nodo->siguiente = NULL;
+    nuevo_nodo->siguiente = lista->cabeza;
+    lista->cabeza = nuevo->nodo;
     
-    if (lista->cabeza == NULL) {
-        lista->cabeza = nuevo_nodo;
-    } else {
-        Nodo* actual = lista->cabeza;
-        while (actual->siguiente) {
-            actual = actual->siguiente;
-        }
-        actual->siguiente = nuevo_nodo;
-    }
+    // if (lista->cabeza == NULL) {
+    //     lista->cabeza = nuevo_nodo;
+    // } else {
+    //     Nodo* actual = lista->cabeza;
+    //     while (actual->siguiente) {
+    //         actual = actual->siguiente;
+    //     }
+    //     actual->siguiente = nuevo_nodo;
+    // }
     
     lista->tamanio++;
     return 1;
