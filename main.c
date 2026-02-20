@@ -53,33 +53,47 @@ int main(void) {
             Vehiculo* v = generarVehiculoAleatorio();
             
             if (v) {
-                switch (v->tipo)
+                
+
+                if(v->tipo != CARGA && v->tipo != EMERGENCIA)
                 {
-                case CARGA:
-                    vehiculosCarga++;
-                    break;
-                case EMERGENCIA:
-                    vehiculosEmergencia++;
-                    break;
-                case MEDICO:
-                    vehiculosMedico++;
-                    break;
-                case TAXI:
-                    vehiculosTaxi++;
-                    break;
-                case PASAJEROS:
-                    vehiculosPasajero++;
-                    break;
-                default:
-                    vehiculosParticular++;
-                    break;
+                    if (insertar_al_inicio(lista_original, v)) {
+                    vehiculos_generados++;
+                    } else {
+                        liberarvehiculo(v);
+                    }
+                }
+                else {
+                        liberarvehiculo(v);
+                        continue;
                 }
 
-                if (insertar_al_inicio(lista_original, v)) {
-                    vehiculos_generados++;
-                } else {
-                    liberarvehiculo(v);
+                if(v)
+                {
+                    switch (v->tipo)
+                    {
+                    case CARGA:
+                        vehiculosCarga++;
+                        break;
+                    case EMERGENCIA:
+                        vehiculosEmergencia++;
+                        break;
+                    case MEDICO:
+                        vehiculosMedico++;
+                        break;
+                    case TAXI:
+                        vehiculosTaxi++;
+                        break;
+                    case PASAJEROS:
+                        vehiculosPasajero++;
+                        break;
+                    default:
+                        vehiculosParticular++;
+                        break;
+                    }
                 }
+                
+        
             }
         }
         printf("El numero de vehiculos de Emergencia es: %d\n", vehiculosEmergencia);
