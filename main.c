@@ -40,15 +40,41 @@ int main(void) {
             fclose(f);
             return 1;
         }
-        int numeroVehiculosCarga = 0; 
         int vehiculos_generados = 0; 
+
+        int vehiculosCarga = 0; 
+        int vehiculosEmergencia= 0; 
+        int vehiculosMedico = 0; 
+        int vehiculosTaxi = 0; 
+        int vehiculosPasajero = 0; 
+        int vehiculosParticular = 0;
+
         for (int i = 0; i < n; i++) {
             Vehiculo* v = generarVehiculoAleatorio();
             
             if (v) {
-                if (v->tipo == CARGA) { 
-                    numeroVehiculosCarga++;
+                switch (v->tipo)
+                {
+                case CARGA:
+                    vehiculosCarga++;
+                    break;
+                case EMERGENCIA:
+                    vehiculosEmergencia++;
+                    break;
+                case MEDICO:
+                    vehiculosMedico++;
+                    break;
+                case TAXI:
+                    vehiculosTaxi++;
+                    break;
+                case PASAJEROS:
+                    vehiculosPasajero++;
+                    break;
+                default:
+                    vehiculosParticular++;
+                    break;
                 }
+
                 if (insertar_al_inicio(lista_original, v)) {
                     vehiculos_generados++;
                 } else {
@@ -56,7 +82,13 @@ int main(void) {
                 }
             }
         }
-        printf("El numero de vehiculos de carga es: %d\n", numeroVehiculosCarga);
+        printf("El numero de vehiculos de Emergencia es: %d\n", vehiculosEmergencia);
+        printf("El numero de vehiculos de Medico es: %d\n", vehiculosMedico);
+        printf("El numero de vehiculos de Pasajeros es: %d\n", vehiculosPasajero);
+        printf("El numero de vehiculos de Carga es: %d\n", vehiculosCarga);
+        printf("El numero de vehiculos de Taxi es: %d\n", vehiculosTaxi);
+        printf("El numero de vehiculos de Particular es: %d\n", vehiculosParticular);
+
         if (vehiculos_generados == 0) {
             printf("Error: No se pudo generar ningun vehiculo\n");
             destruir_lista(lista_original);
@@ -66,16 +98,12 @@ int main(void) {
         
         printf("Lista original generada con %d vehiculos (de %d solicitadas)\n", 
             vehiculos_generados, n);
-        
-        // mostrarPrimerosVehiculos (lista_original, 5, "PRIMEROS VEHICULOS DE LA LISTA ORIGINAL"); 
-        
+                
         printf("\n=============================================\n");
         printf("Depurando los datos que sean de las estaciones centro o no esten en hora pico...\n");
         printf("=============================================\n");
         
         limpiarLista(lista_original);
-
-        // mostrarPrimerosVehiculos (lista_original, 5, "PRIMEROS VEHICULOS DE LA LISTA DEPURADA");
 
         printf("\nCreando copias de la lista para cada algoritmo...\n");
         copias[0] = copiar_lista(lista_original);
@@ -110,9 +138,7 @@ int main(void) {
             printf("✗ ADVERTENCIA: Las listas ordenadas no son identicas\n");
         }
 
-        
-        // mostrarPrimerosVehiculos(copias[0] , 5 , "Primeros de la copia del mergesort");
-        // mostrarPrimerosVehiculos(copias[1] , 5 , "Primeros de la copia del quicksort");
+        impirmirPromedio(lista_original); 
 
         // Liberar memoria
         printf("\nLiberando memoria...\n");
@@ -153,7 +179,7 @@ int main(void) {
     //     for (int i = 0; i < n; i++) {
     //         Vehiculo* v = generarVehiculoAleatorio();
     //         if (v) {
-    //             if (insertar_al_final(lista_original, v)) {
+    //             if (insertar_al_inicio(lista_original, v)) {
     //                 vehiculos_generados++;
     //             } else {
     //                 liberarvehiculo(v);
@@ -214,6 +240,8 @@ int main(void) {
     //     } else {
     //         printf("✗ ADVERTENCIA: Las listas ordenadas no son identicas\n");
     //     }
+
+    //     impirmirPromedio(lista_original); 
         
     //     // mostrarPrimerosVehiculos(copias[0] , 5 , "Primeros de la copia del mergesort");
     //     // mostrarPrimerosVehiculos(copias[1] , 5 , "Primeros de la copia del quicksort");

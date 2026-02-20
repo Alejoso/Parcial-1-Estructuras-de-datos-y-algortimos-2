@@ -73,6 +73,22 @@ int insertar_al_inicio(Lista* lista, Vehiculo* vehiculo) {
     return 1;
 }
 
+void impirmirPromedio(const Lista* lista){
+    if(!lista) return;
+    if(lista->tamanio == 0) return;
+
+    Nodo* actual = lista->cabeza;
+    float sumatoria = 0;
+    while (actual){
+        sumatoria += actual->vehiculo->tiempoTramo;
+        actual = actual->siguiente;
+    }
+
+    float promedio = sumatoria/lista->tamanio;
+
+    printf("\nEl promedio de tiempo de esta lista es: %f\n" , promedio);
+}
+
 // Imprime el contenido de la lista en la consola
 // Muestra una lista numerada de las personas almacenadas
 void imprimir_lista(const Lista* lista) {

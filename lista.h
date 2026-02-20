@@ -19,5 +19,6 @@ int insertar_al_inicio(Lista* lista, Vehiculo* vehiculo);
 void imprimir_lista(const Lista* lista);
 Lista* copiar_lista(const Lista* original);
 int esta_vacia_lista(const Lista* lista);
+void impirmirPromedio(const Lista* lista);
 
 #endif

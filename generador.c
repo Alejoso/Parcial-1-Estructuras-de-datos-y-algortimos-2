@@ -98,7 +98,11 @@ Vehiculo* generarVehiculoAleatorio()
     float tiempoTramo = (float)(20 + rand() % 20);
 
     if (tipo == CARGA){
-        tiempoTramo += 15; 
+        tiempoTramo += 25; 
+    }
+
+    if(tipo == EMERGENCIA){
+        tiempoTramo -= 10;
     }
 
     return crearVehiculo(placa , tipo , sentido , horaMilitar , dia , tiempoTramo , estacion);
